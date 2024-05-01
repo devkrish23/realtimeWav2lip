@@ -31,7 +31,7 @@ RUN curl -s -S -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master
 	pyenv global $PYTHON_VERSION
 
 # install cog
-RUN pip install cog
+#RUN pip install cog
 
 # install deps
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -54,4 +54,13 @@ COPY . .
 ENV PYTHONUNBUFFERED=1
 
 # run cog
-CMD python3 -m cog.server.http
+#CMD python3 
+
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
+
+# Define environment variable
+ENV FLASK_APP=flaskapp_wav2lip.py
+
+# Run app.py when the container launches
+CMD ["flask", "run", "--host=0.0.0.0"]

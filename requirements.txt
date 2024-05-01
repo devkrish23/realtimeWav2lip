@@ -10,3 +10,4 @@ numba==0.48
 mediapipe==0.8.11
 tkinter
 pyaudio
+flask
