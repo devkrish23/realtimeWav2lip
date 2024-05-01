@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Wav2Lip Realtime 🤖</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../static/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../static/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../static/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="../static/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../static/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../static/images/favicon.png" />
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+          Wav2Lip Realtime 🤖
+        </div>
+        <ul class="nav">
+          <li class="nav-item profile">
+            
+          </li>
+          <li class="nav-item nav-category">
+            <span class="nav-link">Navigation</span>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="index.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Playground</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+              <span class="menu-title">Model details</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="documentation.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Documentation</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar p-0 fixed-top d-flex flex-row">
+          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../static/images/logo-mini.svg" alt="logo" /></a>
+          </div>
+          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+              <span class="mdi mdi-menu"></span>
+            </button>
+            
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+              <span class="mdi mdi-format-line-spacing"></span>
+            </button>
+          </div>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+            
+            <div class="row">
+              <div class="col-md-6 col-xl-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-row justify-content-between">
+                      <h4 class="card-title">Original image</h4>
+                    </div>
+                    <div class="blockquote blockquote-primary">
+                      <h4>Upload image file to lip-sync </h4>
+                        <!-- <button type="button" class="btn btn-outline-danger btn-icon-text" accept="image/*" style="float: right;" >Browse Image</button> -->
+                        <form id="uploadForm" class="forms-sample" enctype="multipart/form-data">
+                          <input type="file" id="fileInput" name="image" accept="image/*" style="display: none;">
+                          <label for="fileInput" class="btn btn-dark btn-rounded btn-fw">Browse Image</label>
+                          <span id="selectedFileName"></span> <!-- Element to display the selected file name -->
+                          <span id="fileText"></span> <!-- Element to display the text of the selected file -->
+                        </form>         
+                      <p>Supported file formats: JPG, JPEG, PNG</p>
+                    </div>
+                    <div class="blockquote blockquote-primary">
+                      <h4>Generate Wav2Lip</h4>
+                      <form method="POST" action="{{ url_for('tasks') }}">
+                        <input type="submit" value="Start" name="start" class="btn btn-outline-success btn-fw">
+                        <input type="submit" value="Stop" name="stop" class="btn btn-outline-danger btn-fw">
+                    </form> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-xl-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Wav2Lip real-time lyp-sync 🔉👄</h4>
+                    <div class="owl-carousel owl-theme full-width owl-carousel-dash portfolio-carousel" id="owl-carousel-basic">
+                      <div class="item">
+                        <img src="{{ url_for('video_feed') }}" width="50%" alt=""/>
+                      </div>
+                    </div>                    
+                  </div>
+                </div>
+              </div>              
+            </div>
+          </div>
+
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+              <!-- <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span> -->
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../static/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../static/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="../static/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="../static/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../static/js/off-canvas.js"></script>
+    <script src="../static/js/hoverable-collapse.js"></script>
+    <script src="../static/js/misc.js"></script>
+    <script src="../static/js/settings.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../static/js/dashboard.js"></script>
+    <script src="../static/js/form-browse-file.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>
