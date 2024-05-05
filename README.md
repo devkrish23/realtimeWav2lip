@@ -8,28 +8,40 @@ Wave2Lip revolutionizes the realm of audio-visual synchronization with its groun
 |:-----------------:|:------:|:-----------------:|
 | [Paper](http://cdn.iiit.ac.in/cdn/cvit.iiit.ac.in/images/Projects/Speech-to-Lip/paper.pdf)        | [Demo](https://drive.google.com/file/d/1ACp7aDDOgchtABly4usLhmAAOGFpdq_c/view) | [Colab Notebook](https://colab.research.google.com/drive/15jHVLxYJvmptoYmlfpOGbNi0jSZ85hqq#scrollTo=sh72cJ0K-dfb) |
 
-### Installations:
-•	Python 3.6
-•	ffmpeg: sudo apt-get install ffmpeg
-•	Install necessary packages using pip install -r requirements.txt
+# Wav2Lip Installation and Usage Guide
 
-### Python Libraries:
-•	numpy: For numerical operations.
-•	opencv-python: For image processing and video I/O.
-•	pandas: For data manipulation.
-•	torch: PyTorch deep learning framework.
-•	tqdm: For progress bars.
-•	openvino: OpenVINO toolkit for optimized inference.
-•	pyaudio: For audio processing.
-•	Pillow: For image manipulation.
+## Installations
+- Python 3.6
+- ffmpeg: `sudo apt-get install ffmpeg`
+- Install necessary packages using `pip install -r requirements.txt`
 
-### Models and Files:
-•	Wav2Lip directory containing the checkpoints directory with wav2lip_gan.pth.
-•	Pre-trained face detection model (mobilenet.pth) in the checkpoints directory.
-•	Pre-trained OpenVINO model (wav2lip_openvino_model.xml) in the openvino_model directory.
-•	An image of the face to sync with the audio (Elon_Musk.jpg).
+## Python Libraries
+- numpy: For numerical operations.
+- opencv-python: For image processing and video I/O.
+- pandas: For data manipulation.
+- torch: PyTorch deep learning framework.
+- tqdm: For progress bars.
+- openvino: OpenVINO toolkit for optimized inference.
+- pyaudio: For audio processing.
+- Pillow: For image manipulation.
 
-### Optional Dependencies:
-•	tkinter: For GUI applications (optional).
-•	platform: For platform-specific operations (optional).
-•	subprocess: For subprocess management (optional).
+## Models and Files
+- Wav2Lip directory containing the checkpoints directory with wav2lip_gan.pth.
+- Pre-trained face detection model (mobilenet.pth) in the checkpoints directory.
+- Pre-trained OpenVINO model (wav2lip_openvino_model.xml) in the openvino_model directory.
+- An image of the face to sync with the audio (Elon_Musk.jpg).
+
+## Optional Dependencies
+- tkinter: For GUI applications (optional).
+- platform: For platform-specific operations (optional).
+- subprocess: For subprocess management (optional).
+
+## Usage
+1. Ensure Python 3.6 is installed.
+2. Install ffmpeg and other necessary packages.
+3. Clone this repository and navigate to the root directory.
+4. Install required Python libraries using `pip install -r requirements.txt`.
+5. Place your audio file and image of the face in the appropriate directories.
+6. Run the Wav2Lip program, providing the necessary arguments.
+
+Example command:
