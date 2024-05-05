@@ -53,9 +53,11 @@ Wave2Lip revolutionizes the realm of audio-visual synchronization with its groun
 | Expert Discriminator      | Weights of the expert discriminator                             | [Download](https://iiitaphyd-my.sharepoint.com/personal/radrabha_m_research_iiit_ac_in/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fradrabha%5Fm%5Fresearch%5Fiiit%5Fac%5Fin%2FDocuments%2FWav2Lip%5FModels%2Flipsync%5Fexpert%2Epth&parent=%2Fpersonal%2Fradrabha%5Fm%5Fresearch%5Fiiit%5Fac%5Fin%2FDocuments%2FWav2Lip%5FModels&ga=1)                                         |
 | Visual Quality Discriminator | Weights of the visual disc trained in a GAN setup             | [Download](https://iiitaphyd-my.sharepoint.com/personal/radrabha_m_research_iiit_ac_in/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fradrabha%5Fm%5Fresearch%5Fiiit%5Fac%5Fin%2FDocuments%2FWav2Lip%5FModels%2Fvisual%5Fquality%5Fdisc%2Epth&parent=%2Fpersonal%2Fradrabha%5Fm%5Fresearch%5Fiiit%5Fac%5Fin%2FDocuments%2FWav2Lip%5FModels&ga=1)                                         |
 
-# Real-time Audio Capture and Processing
 
-This document provides a code snippet demonstrating how to capture audio in real-time using PyAudio for lip-syncing inference.
+
+## Real-time Audio Capture and Processing
+
+In real-time lip-syncing inference, we capture audio using PyAudio while simultaneously processing video frames. PyAudio streams audio data in chunks, with each chunk representing a small piece of the audio input. As the audio stream is captured, we divide it into mel-spectrogram chunks, which represent the frequency content of the audio over time. These mel-spectrogram chunks are then fed into the lip-syncing model along with corresponding video frames. The lip-syncing model generates lip movements synchronized with the audio, which are then overlaid onto the video frames. This process continues iteratively for each audio chunk, allowing for real-time lip-syncing of the video based on the captured audio input
 
 ## Requirements
 - Python 3.x
