@@ -3,9 +3,3 @@
 ## Introduction: 
 Wave2Lip revolutionizes the realm of audio-visual synchronization with its groundbreaking real-time audio to video conversion capability. Powered by cutting-edge deep learning techniques, Wave2Lip accurately lip-syncs videos to any target speech in real-time, seamlessly aligning audio with visual content. This project leverages PyAudio for audio processing, Flask for server-side implementation, and a sophisticated inference mechanism that efficiently applies lip-syncing on images. Wave2Lip offers a user-friendly solution for generating lip movements from audio inputs, opening up possibilities for enhanced communication, entertainment, and creative expression."
 
-
-| Feature                  | Description                                                                                     |
-|--------------------------|-------------------------------------------------------------------------------------------------|
-| Real-time Lip-Syncing    | Lip-syncs audio with images in real-time, providing seamless alignment of audio and visuals.    |
-| PyAudio Integration      | Utilizes PyAudio for efficient audio processing, enabling smooth integration with lip-syncing.  |
-| Flask Server             | Implements server-side functionality using Flask, making it easy to deploy and use.            |
