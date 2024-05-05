@@ -52,3 +52,51 @@ Wave2Lip revolutionizes the realm of audio-visual synchronization with its groun
 | Wav2Lip + GAN             | Slightly inferior lip-sync, but better visual quality           | [Download](https://iiitaphyd-my.sharepoint.com/personal/radrabha_m_research_iiit_ac_in/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fradrabha%5Fm%5Fresearch%5Fiiit%5Fac%5Fin%2FDocuments%2FWav2Lip%5FModels%2Fwav2lip%5Fgan%2Epth&parent=%2Fpersonal%2Fradrabha%5Fm%5Fresearch%5Fiiit%5Fac%5Fin%2FDocuments%2FWav2Lip%5FModels&ga=1)                                         |
 | Expert Discriminator      | Weights of the expert discriminator                             | [Download](https://iiitaphyd-my.sharepoint.com/personal/radrabha_m_research_iiit_ac_in/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fradrabha%5Fm%5Fresearch%5Fiiit%5Fac%5Fin%2FDocuments%2FWav2Lip%5FModels%2Flipsync%5Fexpert%2Epth&parent=%2Fpersonal%2Fradrabha%5Fm%5Fresearch%5Fiiit%5Fac%5Fin%2FDocuments%2FWav2Lip%5FModels&ga=1)                                         |
 | Visual Quality Discriminator | Weights of the visual disc trained in a GAN setup             | [Download](https://iiitaphyd-my.sharepoint.com/personal/radrabha_m_research_iiit_ac_in/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fradrabha%5Fm%5Fresearch%5Fiiit%5Fac%5Fin%2FDocuments%2FWav2Lip%5FModels%2Fvisual%5Fquality%5Fdisc%2Epth&parent=%2Fpersonal%2Fradrabha%5Fm%5Fresearch%5Fiiit%5Fac%5Fin%2FDocuments%2FWav2Lip%5FModels&ga=1)                                         |
+
+# Real-time Audio Capture and Processing
+
+This document provides a code snippet demonstrating how to capture audio in real-time using PyAudio for lip-syncing inference.
+
+## Requirements
+- Python 3.x
+- PyAudio
+
+## Usage
+```python
+import pyaudio
+import numpy as np
+from time import time
+
+CHUNK = 1024  # Number of frames per buffer during audio capture
+FORMAT = pyaudio.paInt16  # Format of the audio stream
+CHANNELS = 1  # Number of audio channels (1 for monaural audio)
+RATE = 16000  # Sample rate of the audio stream (16000 samples/second)
+RECORD_SECONDS = 0.5  # Duration of audio capture in seconds
+
+p = pyaudio.PyAudio()
+stream = p.open(format=FORMAT,
+                channels=CHANNELS,
+                rate=RATE,
+                input=True,
+                frames_per_buffer=CHUNK)
+
+def record_audio_stream():
+    frames = []
+    print("Recording audio ...")
+    start_time = time()
+    for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+        data = stream.read(CHUNK)
+        frames.append(data)
+    end_time = time()
+    print("Recording time:", end_time - start_time, "seconds")
+
+    # Combine all recorded frames into a single numpy array
+    audio_data = np.frombuffer(b''.join(frames), dtype=np.int16)
+    return audio_data
+
+# Example usage
+audio_data = record_audio_stream()
+# Now you can process the audio data as needed, such as generating mel-spectrogram chunks for lip-syncing inference
+
+
+
