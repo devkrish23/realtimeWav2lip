@@ -98,7 +98,8 @@ def record_audio_stream():
 
 # Example usage
 audio_data = record_audio_stream()
-# Now you can process the audio data as needed, such as generating mel-spectrogram chunks for lip-syncing inference ```
+# Now you can process the audio data as needed, such as generating mel-spectrogram chunks for lip-syncing inference
+```
 
 # Real-time Lip-Syncing App with Flask
 
@@ -128,6 +129,5 @@ Here's an example usage scenario:
 4. If you want to upload a different image, click "Clear" to remove the current image and upload a new one.
 
 By following these steps, you can use Flask to run the app and perform real-time lip-syncing inference based on the uploaded image.
-
 
 
