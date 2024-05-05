@@ -1,66 +1,52 @@
-FROM nvidia/cuda:11.6.2-cudnn8-devel-ubuntu20.04
+# Use a base image with Python and necessary dependencies
+FROM python:3.8-slim
 
-ARG DEBIAN_FRONTEND=noninteractive
+LABEL maintainer="krishna158@live.com"
 
-# install python via pyenv
-RUN apt-get update && apt-get install -y --no-install-recommends \
-	make \
-	build-essential \
-	libssl-dev \
-	zlib1g-dev \
-	libbz2-dev \
-	libreadline-dev \
-	libsqlite3-dev \
-	wget \
-	curl \
-	llvm \
-	libncurses5-dev \
-	libncursesw5-dev \
-	xz-utils \
-	tk-dev \
-	libffi-dev \
-	liblzma-dev \
-	git \
-	ca-certificates \
-    libgl1 \
-	&& rm -rf /var/lib/apt/lists/*
-ENV PATH="/root/.pyenv/shims:/root/.pyenv/bin:$PATH"
-ARG PYTHON_VERSION=3.8
-RUN curl -s -S -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash && \
-	pyenv install $PYTHON_VERSION && \
-	pyenv global $PYTHON_VERSION
 
-# install cog
-#RUN pip install cog
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV FLASK_RUN_HOST 0.0.0.0
+ENV ALSA_CONFIG_PATH=/etc/asound.conf
 
-# install deps
-RUN apt-get update && apt-get install -y --no-install-recommends \
-	ffmpeg libsndfile1 \
-	&& rm -rf /var/lib/apt/lists/*
+# Set working directory
+WORKDIR /app
 
-# copy to /src
-ENV WORKDIR /src
-RUN mkdir -p $WORKDIR
-WORKDIR $WORKDIR
+# Copy requirements file
+COPY requirements.txt /app/requirements.txt
 
-# install requirements
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-RUN pip install git+https://github.com/elliottzheng/batch-face.git@master
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y \
+        build-essential \
+        libportaudio2 \
+        libportaudiocpp0 \
+        portaudio19-dev \
+        libsm6 \
+        libxext6 \
+        libxrender-dev \
+        libgl1-mesa-glx \
+        libglib2.0-0 \
+        tk \
+        alsa-utils \
+        libasound2-dev\
+        libsndfile1\
+        wget
 
-# copy sources
-COPY . .
+RUN apt-get install gcc -y
 
-ENV PYTHONUNBUFFERED=1
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# run cog
-#CMD python3 
+# Copy the Flask application into the container
+COPY . /app
 
-# Make port 5000 available to the world outside this container
-EXPOSE 5000
+# Expose port 5000 to the outside world
+EXPOSE 8080
 
-# Define environment variable
-ENV FLASK_APP=flaskapp_wav2lip.py
-
-# Run app.py when the container launches
-CMD ["flask", "run", "--host=0.0.0.0"]
+# # Command to run the Flask application
+# ENV FLASK_APP=flaskapp_wav2lip.py
+# CMD ["flask", "run"]
+ENTRYPOINT ["python"]
+CMD ["flaskapp_wav2lip.py"]

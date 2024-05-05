@@ -1,5 +1,4 @@
 from flask import Flask, Response, render_template, redirect, request, jsonify
-import cv2
 import os
 from inference import main
 import time
@@ -9,6 +8,16 @@ app=Flask(__name__)
 app.config['IMAGE_DIR'] = './assets/uploaded_images/' 
 app.config['Filename'] = ''
 
+def remove_files_in_directory(directory):
+    # List all files in the directory
+    files = os.listdir(directory)
+    
+    # Iterate over each file and remove it
+    for file in files:
+        file_path = os.path.join(directory, file)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -16,6 +25,10 @@ def index():
 # Route to handle the file upload
 @app.route('/upload', methods=['POST'])
 def upload():
+
+    # clear images folder
+    remove_files_in_directory(app.config['IMAGE_DIR'])
+
     # Check if the POST request has the file part
     if 'image' not in request.files:
         return 'No file part'
@@ -68,4 +81,4 @@ def video_feed():
     return ""
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)

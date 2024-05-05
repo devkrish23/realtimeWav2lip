@@ -1,8 +1,8 @@
 import argparse
 import math
 import os
-import platform
-import subprocess
+#import platform
+#import subprocess
 
 import cv2
 import numpy as np
@@ -20,10 +20,8 @@ from time import time, sleep
 
 import pyaudio
 
-import tkinter as tk
+#import tkinter as tk
 from PIL import Image, ImageTk
-import av
-import streamlit as st
 
 parser = argparse.ArgumentParser(description='Inference code to lip-sync videos in the wild using Wav2Lip models')
 
