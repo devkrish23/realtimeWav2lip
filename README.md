@@ -57,7 +57,7 @@ Wave2Lip revolutionizes the realm of audio-visual synchronization with its groun
 
 ## Real-time Audio Capture and Processing
 
-In real-time lip-syncing inference, we capture audio using PyAudio while simultaneously processing video frames. PyAudio streams audio data in chunks, with each chunk representing a small piece of the audio input. As the audio stream is captured, we divide it into mel-spectrogram chunks, which represent the frequency content of the audio over time. These mel-spectrogram chunks are then fed into the lip-syncing model along with corresponding video frames. The lip-syncing model generates lip movements synchronized with the audio, which are then overlaid onto the video frames. This process continues iteratively for each audio chunk, allowing for real-time lip-syncing of the video based on the captured audio input
+In real-time lip-syncing inference, we capture audio using PyAudio while simultaneously processing image frames. PyAudio streams audio data in chunks, with each chunk representing a small piece of the audio input. As the audio stream is captured, we divide it into mel-spectrogram chunks, which represent the frequency content of the audio over time. These mel-spectrogram chunks are then fed into the lip-syncing model along with corresponding image frames. The lip-syncing model generates lip movements synchronized with the audio, which are then overlaid onto the image frames. This process continues iteratively for each audio chunk, allowing for real-time lip-syncing of the image based on the captured audio input.
 
 ## Requirements
 - Python 3.x
