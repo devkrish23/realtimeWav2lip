@@ -102,3 +102,31 @@ audio_data = record_audio_stream()
 
 
 
+## Real-time Lip-Syncing App with Flask
+
+To run this Flask app, first ensure you have Python installed along with the necessary dependencies such as Flask and PyAudio. Then follow these steps:
+
+1. **Clone the Repository**: Clone the repository containing the Flask app and navigate to its directory.
+
+2. **Install Dependencies**: Install the required Python dependencies by running `pip install -r requirements.txt`.
+
+3. **Run the App**: Execute the `app.py` file to start the Flask app. You can do this by running `python app.py` in your terminal.
+
+4. **Access the Web Interface**: Open a web browser and navigate to `http://localhost:8080` to access the app's interface.
+
+5. **Upload an Image**: Use the interface to upload an image containing a face.
+
+6. **Start Lip-Syncing**: Click on the "Start" button to start the lip-syncing process. The lip-synced video will appear on the same page.
+
+7. **Stop Lip-Syncing**: Click on the "Stop" button to pause the lip-syncing process.
+
+8. **Clear Image**: To upload a new image, click on the "Clear" button to remove the current image.
+
+Here's an example usage scenario:
+
+1. Upload an image by clicking the "Choose File" button.
+2. Click "Start" to begin the lip-syncing process. The lip-synced video will start playing.
+3. Click "Stop" to pause the lip-syncing process.
+4. If you want to upload a different image, click "Clear" to remove the current image and upload a new one.
+
+By following these steps, you can use Flask to run the app and perform real-time lip-syncing inference based on the uploaded image.
