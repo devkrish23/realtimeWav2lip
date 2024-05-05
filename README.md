@@ -1,9 +1,4 @@
-# Wav2Lip: Accurately Lip-syncing Videos In The Wild
-Wav2Lip is hosted for free at Sync Labs
-Are you looking to integrate this into a product? We have a turn-key hosted API with new and improved lip-syncing models here: https://synclabs.so/
+# Wav2Lip: Li-Syncing real-Time Audio with Images
 
-For any other commercial / enterprise requests, please contact us at pavan@synclabs.so and prady@synclabs.so
-
-To reach out to the authors directly you can reach us at prajwal@synclabs.so, rudrabha@synclabs.so.
-
-This code is part of the paper: A Lip Sync Expert Is All You Need for Speech to Lip Generation In the Wild published at ACM Multimedia 2020.
+## Introduction: 
+Wave2Lip revolutionizes the realm of audio-visual synchronization with its groundbreaking real-time audio to video conversion capability. Powered by cutting-edge deep learning techniques, Wave2Lip accurately lip-syncs videos to any target speech in real-time, seamlessly aligning audio with visual content. This project leverages PyAudio for audio processing, Flask for server-side implementation, and a sophisticated inference mechanism that efficiently applies lip-syncing on images. Wave2Lip offers a user-friendly solution for generating lip movements from audio inputs, opening up possibilities for enhanced communication, entertainment, and creative expression."
