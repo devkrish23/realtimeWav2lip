@@ -63,7 +63,7 @@ In real-time lip-syncing inference, we capture audio using PyAudio while simulta
 - Python 3.x
 - PyAudio
 
-## Usage
+## Code
 ```python
 import pyaudio
 import numpy as np
