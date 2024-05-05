@@ -44,31 +44,11 @@ Wave2Lip revolutionizes the realm of audio-visual synchronization with its groun
 5. Place your audio file and image of the face in the appropriate directories.
 6. Run the Wav2Lip program, providing the necessary arguments.
 
-# Getting the Model Weights
+# Model Weights
 
-This document provides links to download the weights for various models related to lip-sync.
-
-## Wav2Lip Model Weights
-- **Model**: Highly accurate lip-sync
-- **Description**: 
-  - Wav2Lip is a model designed for accurate lip-syncing, aligning lip movements with given audio input.
-- **Link to the model**: [Download Wav2Lip Model Weights](link)
-
-## Wav2Lip + GAN Model Weights
-- **Model**: Slightly inferior lip-sync, but better visual quality
-- **Description**: 
-  - Wav2Lip + GAN combines the Wav2Lip model with a GAN (Generative Adversarial Network) for improved visual quality.
-- **Link to the model**: [Download Wav2Lip + GAN Model Weights](link)
-
-## Expert Discriminator Weights
-- **Model**: Expert Discriminator
-- **Description**: 
-  - The Expert Discriminator is a component of the Wav2Lip + GAN model.
-- **Link to the model**: [Download Expert Discriminator Weights](link)
-
-## Visual Quality Discriminator Weights
-- **Model**: Visual Quality Discriminator
-- **Description**: 
-  - The Visual Quality Discriminator is trained in a GAN setup and assesses the visual quality of generated lip-sync images.
-- **Link to the model**: [Download Visual Quality Discriminator Weights](link)
-
+| Model                     | Description                                                     | Link to the model                                        |
+|---------------------------|-----------------------------------------------------------------|----------------------------------------------------------|
+| Wav2Lip                   | Highly accurate lip-sync                                        | [Download](link)                                         |
+| Wav2Lip + GAN             | Slightly inferior lip-sync, but better visual quality           | [Download](link)                                         |
+| Expert Discriminator      | Weights of the expert discriminator                             | [Download](link)                                         |
+| Visual Quality Discriminator | Weights of the visual disc trained in a GAN setup             | [Download](link)                                         |
