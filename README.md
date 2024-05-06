@@ -137,4 +137,87 @@ Here's an example usage scenario:
 
 By following these steps, you can use Flask to run the app and perform real-time lip-syncing inference based on the uploaded image.
 
+## Real-Time Lip-Syncing Flask App
+
+This Flask application offers a real-time lip-syncing solution, allowing users to upload an image and generate a lip-synced video. The application consists of three main routes:
+
+- **/upload**: This route handles file uploads. When a user uploads an image file, it clears any existing images in the specified directory, saves the uploaded file to that directory, and sets the `Filename` configuration variable to the filename of the uploaded file. Afterward, it redirects the user to the root URL.
+
+- **/requests**: This route manages the lip-syncing process. It handles both GET and POST requests for controlling the lip-syncing operation. When a POST request is made, it checks the form data to start, stop, or clear the lip-syncing process by setting the `flag` variable accordingly. A sleep is included to prevent rapid flag changes. For GET requests, it renders the index template, which contains controls for starting, stopping, and clearing the lip-syncing process.
+
+- **/video_feed**: This route streams the lip-synced video. If an image has been uploaded, it returns a response containing the output of the `main` function, which generates the lip-synced video. The response is of type `multipart/x-mixed-replace`, enabling continuous streaming of video frames to the client.
+
+```python
+from flask import Flask, Response, render_template, redirect, request, jsonify
+import os
+from inference import main
+import time
+
+app = Flask(__name__) 
+
+app.config['IMAGE_DIR'] = './assets/uploaded_images/' 
+app.config['Filename'] = ''
+
+# Function to remove files in a directory
+def remove_files_in_directory(directory):
+    files = os.listdir(directory)
+    for file in files:
+        file_path = os.path.join(directory, file)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    remove_files_in_directory(app.config['IMAGE_DIR'])
+
+    if 'image' not in request.files:
+        return 'No file part'
+
+    file = request.files['image']
+
+    if file.filename == '':
+        return 'No selected file'
+
+    app.config['Filename'] = file.filename
+    file.save(os.path.join(app.config['IMAGE_DIR'], file.filename))
+
+    return redirect("/")
+
+global flag
+flag = 0
+
+@app.route('/requests', methods=['POST','GET'])
+def tasks():
+    global flag
+    try:    
+        if request.method == 'POST':
+            if request.form.get('start') == 'Start':
+                flag = 1
+            elif request.form.get('stop') == 'Stop':
+                flag = 0
+            elif request.form.get('clear') == 'clear':
+                flag = 0
+            print(f"Flag value {flag}")
+            time.sleep(2)
+        elif request.method == 'GET':
+            return render_template('index.html')
+    except Exception as e:
+        print(e)
+
+    return render_template("index.html")
+
+
+@app.route('/video_feed', methods=['POST', 'GET'])
+def video_feed():
+    global flag
+    try:    
+        if app.config['Filename'] != '':        
+            return Response(main(os.path.join(app.config['IMAGE_DIR'], app.config['Filename']), flag), mimetype='multipart/x-mixed-replace; boundary=frame')
+    except Exception as e:
+        print(e)
+    return ""
 
