@@ -101,6 +101,12 @@ audio_data = record_audio_stream()
 # Now you can process the audio data as needed, such as generating mel-spectrogram chunks for lip-syncing inference
 ```
 
+# Optimizaton 
+
+We are using OpenVINO to optimize the inference process of the Wav2Lip model for lip-syncing videos. OpenVINO, or Open Visual Inference and Neural network Optimization, provides a set of tools and libraries to accelerate deep learning inference across a variety of Intel hardware, including CPUs, GPUs, and VPUs. By leveraging OpenVINO, we can optimize the model for inference on Intel processors, improving performance and reducing latency. This is particularly useful for real-time applications like lip-syncing, where low latency is crucial for a seamless user experience.
+
+
+
 # Real-time Lip-Syncing App with Flask
 
 To run this Flask app, first ensure you have Python installed along with the necessary dependencies such as Flask and PyAudio. Then follow these steps:
