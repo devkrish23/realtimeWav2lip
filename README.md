@@ -12,7 +12,6 @@ Wave2Lip revolutionizes the realm of audio-visual synchronization with its groun
 
 ## Installations
 - Python 3.6
-- ffmpeg: `sudo apt-get install ffmpeg`
 - Install necessary packages using `pip install -r requirements.txt`
 
 ## Python Libraries
@@ -36,13 +35,6 @@ Wave2Lip revolutionizes the realm of audio-visual synchronization with its groun
 - platform: For platform-specific operations (optional).
 - subprocess: For subprocess management (optional).
 
-## Usage
-1. Ensure Python 3.6 is installed.
-2. Install ffmpeg and other necessary packages.
-3. Clone this repository and navigate to the root directory.
-4. Install required Python libraries using `pip install -r requirements.txt`.
-5. Place your audio file and image of the face in the appropriate directories.
-6. Run the Wav2Lip program, providing the necessary arguments.
 
 # Model Weights
 
@@ -63,6 +55,7 @@ In real-time lip-syncing inference, we capture audio using PyAudio while simulta
 ## Requirements
 - Python 3.x
 - PyAudio
+- Flask
 
 ## Code
 ```python
