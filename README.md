@@ -214,4 +214,11 @@ def video_feed():
     except Exception as e:
         print(e)
     return ""
+```
+
+## Benchmark
+|    Model    |    Inference Time    |
+|-------------|----------------------|
+| Wave2Lip + GAN    |    0.3 sec    |
+| Wave2Lip + GAN (OpenVino) |    0.26 sec    |
 
