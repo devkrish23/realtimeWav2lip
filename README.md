@@ -1,4 +1,4 @@
-# Wav2Lip: Lip-Syncing Eeal-Time Audio with Images
+# Wav2Lip: Lip-Syncing Real-Time Audio with Images
 
 ## Introduction
 
