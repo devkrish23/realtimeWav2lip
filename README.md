@@ -31,7 +31,6 @@ Wave2Lip revolutionizes the realm of audio-visual synchronization with its groun
 - An image of the face to sync with the audio (Elon_Musk.jpg).
 
 ## Optional Dependencies
-- tkinter: For GUI applications (optional).
 - platform: For platform-specific operations (optional).
 - subprocess: For subprocess management (optional).
 
