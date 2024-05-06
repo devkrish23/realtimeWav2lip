@@ -212,8 +212,8 @@ def video_feed():
 ## Benchmark
 |    Model    |    Inference Time    |
 |-------------|----------------------|
-| Wave2Lip + GAN    |    0.3 sec    |
-| Wave2Lip + GAN (OpenVino) |    0.26 sec    |
+| Wav2Lip + GAN    |    0.3 sec    |
+| Wav2Lip + GAN (OpenVino) |    0.26 sec    |
 
 Optimized the code using OpenVino model conversion. 
 The wav2lip+GAN (OpenVino) model does not require GPU and has less inference time as mentioned in the above Benchmark table.
