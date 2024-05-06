@@ -122,13 +122,6 @@ To run this Flask app, first ensure you have Python installed along with the nec
 
 8. **Clear Image**: To upload a new image, click on the "Clear" button to remove the current image.
 
-Here's an example usage scenario:
-
-1. Upload an image by clicking the "Choose File" button.
-2. Click "Start" to begin the lip-syncing process. The lip-synced video will start playing.
-3. Click "Stop" to pause the lip-syncing process.
-4. If you want to upload a different image, click "Clear" to remove the current image and upload a new one.
-
 By following these steps, you can use Flask to run the app and perform real-time lip-syncing inference based on the uploaded image.
 
 ## Real-Time Lip-Syncing Flask App
