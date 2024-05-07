@@ -108,19 +108,21 @@ To run this Flask app, first ensure you have Python installed along with the nec
 
 1. **Clone the Repository**: Clone the repository containing the Flask app and navigate to its directory.
 
-2. **Install Dependencies**: Install the required Python dependencies by running `pip install -r requirements.txt`.
+2. **Create virtual environments for python with conda**: Please follow the instructions in [Activate Virtual Enviroment](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/) to activate your virtual enviroment.
 
-3. **Run the App**: Execute the `app.py` file to start the Flask app. You can do this by running `python app.py` in your terminal.
+3. **Install Dependencies**: Install the required Python dependencies by running `pip install -r requirements.txt`.
 
-4. **Access the Web Interface**: Open a web browser and navigate to `http://localhost:8080` to access the app's interface.
+4. **Run the App**: Execute the `app.py` file to start the Flask app. You can do this by running `python app.py` in your terminal.
 
-5. **Upload an Image**: Use the interface to upload an image containing a face.
+5. **Access the Web Interface**: Open a web browser and navigate to `http://localhost:8080` to access the app's interface.
 
-6. **Start Lip-Syncing**: Click on the "Start" button to start the lip-syncing process. The lip-synced video will appear on the same page.
+6. **Upload an Image**: Use the interface to upload an image containing a face.
 
-7. **Stop Lip-Syncing**: Click on the "Stop" button to pause the lip-syncing process.
+7. **Start Lip-Syncing**: Click on the "Start" button to start the lip-syncing process. The lip-synced video will appear on the same page.
 
-8. **Clear Image**: To upload a new image, click on the "Clear" button to remove the current image.
+8. **Stop Lip-Syncing**: Click on the "Stop" button to pause the lip-syncing process.
+
+9. **Clear Image**: To upload a new image, click on the "Clear" button to remove the current image.
 
 By following these steps, you can use Flask to run the app and perform real-time lip-syncing inference based on the uploaded image.
 
