@@ -180,8 +180,7 @@ convert_onnx_to_openvino()
 print("successfully converted pytorch -> onnx -> openvino")
 ```
 
-Reference: Detailed instructions for model conversion can be found here - [link](https://docs.openvino.ai/2024/notebooks/102-pytorch-to-openvino-with-output.html)
-
+Reference: Detailed instructions for model conversion can be found here - [link](https://docs.openvino.ai/2024/get-started.html)
 # Real-time Lip-Syncing App with Flask
 
 To run this Flask app, first ensure you have Python installed along with the necessary dependencies such as Flask and PyAudio. Then follow these steps:
