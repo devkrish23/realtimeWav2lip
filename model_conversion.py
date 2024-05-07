@@ -1,5 +1,5 @@
 import torch
-from Wav2Lip.models import Wav2Lip
+from models import Wav2Lip
 import openvino as ov
 import os
 import numpy as np
@@ -7,7 +7,7 @@ import numpy as np
 
 device = 'cpu'
 
-onnx_model_path = 'D:\\UNCC_MSCS\\Sem 2\\CCN\\Project\\Wav2Lip\\wav2lip_onnx_export.onnx'
+onnx_model_path = 'Wav2Lip/openvino_model/wav2lip_onnx_export.onnx'
 
 def convert_pytorch_to_onnx(onnx_model_path):
         
