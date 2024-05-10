@@ -187,7 +187,13 @@ To run this Flask app, first ensure you have Python installed along with the nec
 
 1. **Clone the Repository**: Clone the repository containing the Flask app and navigate to its directory.
 
-2. **Create virtual environments for python with conda**: Please follow the instructions in [Activate Virtual Enviroment](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/) to activate your virtual enviroment.
+2. **Create virtual environments for python with conda**:
+    - Open Conda terminal client and check if Conda is available by running `conda -V`.
+    - Run `conda update conda` to check Conda is up to date.
+    - Create virtual environment by running `conda create -n <your env name>`.
+    - Run `conda activate <your env name>` to activate your virtual enviornment.
+    - Run `conda install pip`. This will install pip to your virtual environment directory.
+    - Navigate to the directory containing cloned repository using `cd <path to directory>`
 
 3. **Install Dependencies**: Install the required Python dependencies by running `pip install -r requirements.txt`.
 
