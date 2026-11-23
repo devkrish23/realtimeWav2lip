@@ -1,13 +1,13 @@
 pandas
 numpy
 librosa
-pyaudio==0.2.14
 opencv-python
 torch
 tqdm
 numba
 setuptools
 flask==3.0.3
-openvino==2024.1.0
+openvino>=2025.4.0
 batch-face==1.4.0
 watchdog==4.0.0
+sounddevice

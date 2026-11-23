@@ -16,3 +16,8 @@ Wav2Lip/checkpoints/
 openvino_model/
 node_modules
 bkp/
+venv/
+assets/uploaded_media/
+assets/uploaded_images/
+results/
+temp/

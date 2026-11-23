@@ -85,46 +85,63 @@
           <div class="content-wrapper">
             
             
-            <div class="row">
-              <div class="col-md-6 col-xl-4 grid-margin stretch-card">
-                <div class="card">
+            <div class="row justify-content-center">
+              <div class="col-md-5 col-xl-4 grid-margin stretch-card">
+                <div class="card shadow-sm">
                   <div class="card-body">
                     <div class="d-flex flex-row justify-content-between">
-                      <h4 class="card-title">Original image</h4>
+                      <h4 class="card-title text-primary">Original Media</h4>
                     </div>
                     <div class="blockquote blockquote-primary">
-                      <h4>Upload image file to lip-sync </h4>
-                        <!-- <button type="button" class="btn btn-outline-danger btn-icon-text" accept="image/*" style="float: right;" >Browse Image</button> -->
+                      <h4>Upload Image or Video</h4>
                         <form id="uploadForm" class="forms-sample" enctype="multipart/form-data">
-                          <input type="file" id="fileInput" name="image" accept="image/*" style="display: none;">
-                          <label for="fileInput" class="btn btn-dark btn-rounded btn-fw">Browse Image</label>
+                          <input type="file" id="fileInput" name="media" accept="image/*,video/*" style="display: none;">
+                          <label for="fileInput" class="btn btn-dark btn-rounded btn-fw">Browse Media</label>
                           <span id="selectedFileName"></span> <!-- Element to display the selected file name -->
                           <span id="fileText"></span> <!-- Element to display the text of the selected file -->
                         </form>         
-                      <p>Supported file formats: JPG, JPEG, PNG</p>
+                      <p class="text-muted mt-2" style="font-size: 0.9em;">Supported formats: JPG, PNG, MP4 (H.264)</p>
                     </div>
                     <div class="blockquote blockquote-primary">
-                      <h4>Generate Wav2Lip</h4>
+                      <h4>Start Stream</h4>
                       <form method="POST" action="{{ url_for('tasks') }}">
-                        <input type="submit" value="Start" name="start" class="btn btn-outline-success btn-fw">
-                        <input type="submit" value="Stop" name="stop" class="btn btn-outline-danger btn-fw">
-                    </form> 
+                        <div class="form-group">
+                          <label for="audio_device">Select Microphone:</label>
+                          <select class="form-control text-white" id="audio_device" name="audio_device" style="margin-bottom: 15px; background: #2A3038;">
+                            <option value="">-- Default System Microphone --</option>
+                            {% for dev in devices %}
+                              <option value="{{ dev.id }}">[{{ dev.id }}] {{ dev.name }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="noise_threshold">Noise Gate: <span id="threshold_val">400</span></label>
+                          <input type="range" class="form-control-range" id="noise_threshold" name="noise_threshold" min="0" max="16000" value="400" oninput="document.getElementById('threshold_val').innerText = this.value;">
+                          <small class="form-text text-muted">Slide up if your mic picks up static.</small>
+                        </div>
+                        <div class="d-flex justify-content-start gap-2 mt-4" style="gap: 10px;">
+                          <input type="submit" value="Start" name="start" class="btn btn-success btn-lg px-5">
+                          <input type="submit" value="Stop" name="stop" class="btn btn-danger btn-lg px-5">
+                        </div>
+                      </form> 
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6 col-xl-4 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Wav2Lip real-time lyp-sync 🔉👄</h4>
-                    <div class="owl-carousel owl-theme full-width owl-carousel-dash portfolio-carousel" id="owl-carousel-basic">
-                      <div class="item">
-                        <img src="{{ url_for('video_feed') }}" width="50%" alt=""/>
-                      </div>
-                    </div>                    
+              <div class="col-md-7 col-xl-8 grid-margin stretch-card">
+                <div class="card shadow-sm border-primary">
+                  <div class="card-body text-center">
+                    <h4 class="card-title text-success mb-4">Live Wav2Lip Output 🔉👄</h4>
+                    <div class="video-container" style="background: #111; padding: 15px; border-radius: 12px; min-height: 400px; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 10px #000;">
+                      <img id="videoFeed" src="{{ url_for('video_feed') }}" style="border-radius:8px; max-width: 100%; max-height: 70vh; object-fit: contain;" alt="Waiting for stream to start..."/>
+                    </div>
+                    <script>
+                      // Prevent browser from caching the MJPEG stream
+                      document.getElementById('videoFeed').src = "{{ url_for('video_feed') }}?t=" + new Date().getTime();
+                    </script>
                   </div>
                 </div>
-              </div>              
+              </div>
             </div>
           </div>
 
